@@ -4,8 +4,6 @@
 #include "counter.h"
 
 static uint8_t counter_initialized = 0;
-static uint8_t minutes = 0;
-static uint8_t seconds = 0;
 static uint16_t countdown = 0;
 
 static void counter_initialize()
@@ -67,8 +65,10 @@ void counter_set(uint8_t minutes, uint8_t seconds)
 
 void counter_decrement()
 {
-	if (countdown > 0)
+	if (countdown > 0) {
 		countdown--;
+		internal_counter_set();
+	}
 }
 
 uint16_t counter_get()

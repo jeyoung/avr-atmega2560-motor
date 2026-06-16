@@ -13,8 +13,10 @@ static void loop();
 int main(int argc, char **argv)
 {
 	main_initialize();
-	while (1)
+	while (1) {
+		main_process_buttons();
 		loop();
+	}
 	return 0;
 }
 

@@ -1,19 +1,24 @@
 #include <avr/io.h>
 
-static void init()
+static uint8_t power_light_initialized = 0;
+
+static void power_light_initialize()
 {
-	DDRL |= (0x1 << DDL7);
+	DDRL |= (1 << DDL7);
+	power_light_initialized = 1;
 }
 
 void power_light_on()
 {
-	init();
-	PORTL |= (0x1 << PORTL7);
+	if (!power_light_initialized)
+		power_light_initialize();
+	PORTL |= (1 << PORTL7);
 }
 
 void power_light_off()
 {
-	init();
-	PORTL &= ~(0x1 << PORTL7);
+	if (!power_light_initialized)
+		power_light_initialize();
+	PORTL &= ~(1 << PORTL7);
 }
 

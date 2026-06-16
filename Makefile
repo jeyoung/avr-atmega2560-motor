@@ -11,11 +11,10 @@ SRCDIR = src
 OBJDIR = obj
 BINDIR = bin
 
-INCLUDES = -I./include -I/usr/lib/avr/include
+INCLUDES = -I./include
 CFLAGS = $(INCLUDES) -Os -DF_CPU=16000000UL -std=c11 -mmcu=atmega2560
 
-LIBS = -L/usr/lib/avr/lib
-LDFLAGS = $(LIBS) -mmcu=atmega2560
+LDFLAGS = -mmcu=atmega2560
 
 SRCS = $(wildcard $(SRCDIR)/*.c)
 OBJS = $(SRCS:$(SRCDIR)/%.c=$(OBJDIR)/%.o)
